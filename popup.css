@@ -1,0 +1,74 @@
+:root {
+  --bg: #F3F5F4; --surface: #FFFFFF; --ink: #15201D; --muted: #56635F;
+  --line: #DCE3E1; --soft: #E2EFEC; --accent: #0E6B5F; --off: #B8C3C0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; width: 360px; background: var(--bg); color: var(--ink);
+  font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, system-ui, sans-serif; font-size: 14px;
+}
+@media (max-width: 480px) { body { width: auto; } }
+main { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+header { display: flex; align-items: center; justify-content: space-between; }
+h1 { margin: 0; font-size: 24px; line-height: 1.2; }
+.sub { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--muted); }
+button { font-family: inherit; color: inherit; }
+
+.power {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 16px; border-radius: 16px; background: var(--accent); color: #fff; border: 1px solid var(--accent);
+}
+.power div { display: flex; flex-direction: column; gap: 2px; }
+.power strong { font-size: 17px; }
+.power span { font-size: 12px; color: #D6ECE7; }
+.power.off { background: var(--surface); color: var(--ink); border-color: var(--line); }
+.power.off span { color: var(--muted); }
+
+.switch {
+  width: 50px; height: 30px; flex: none; border-radius: 15px; border: none; padding: 3px; cursor: pointer;
+  display: flex; justify-content: flex-end; background: var(--off);
+}
+.switch span { width: 24px; height: 24px; border-radius: 12px; background: #fff; display: block; }
+.switch[aria-checked="true"] { justify-content: flex-start; background: var(--accent); }
+.switch.big { width: 58px; height: 34px; border-radius: 17px; }
+.switch.big span { width: 28px; height: 28px; border-radius: 14px; }
+.power:not(.off) .switch.big { background: #fff; }
+.power:not(.off) .switch.big span { background: var(--accent); }
+.switch:focus-visible, .mode:focus-visible, .seg button:focus-visible { outline: 3px solid #F2A541; outline-offset: 2px; }
+
+.modes { display: flex; flex-direction: column; gap: 8px; }
+.mode {
+  width: 100%; display: flex; align-items: center; gap: 12px; padding: 10px 12px; text-align: right;
+  border-radius: 12px; background: var(--surface); border: 1px solid var(--line); cursor: pointer;
+}
+.mode b { display: block; font-size: 15px; }
+.mode small { display: block; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.mode .dot {
+  width: 20px; height: 20px; flex: none; border-radius: 10px; border: 2px solid #8A9894;
+  display: flex; align-items: center; justify-content: center;
+}
+.mode[aria-checked="true"] { background: var(--soft); border: 2px solid var(--accent); padding: 9px 11px; }
+.mode[aria-checked="true"] .dot { border-color: var(--accent); }
+.mode[aria-checked="true"] .dot::after { content: ""; width: 9px; height: 9px; border-radius: 5px; background: var(--accent); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.card h2:not(:first-child) { margin-top: 12px; }
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; padding: 4px; border-radius: 11px; background: #ECF0EF; }
+.seg button { min-height: 36px; border: none; border-radius: 8px; background: transparent; color: var(--muted); font-size: 13px; cursor: pointer; }
+.seg button[aria-checked="true"] { background: #fff; color: var(--accent); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+.row label { font-weight: 600; }
+.row output { color: var(--accent); font-weight: 600; }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+.hint { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
+
+.list { padding: 0; }
+.trow { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #ECF0EF; }
+.trow:last-child { border-bottom: none; }
+.trow > span { flex: 1; }
+.trow b { display: block; font-size: 14px; }
+.trow small { display: block; color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+.note { margin: 0; padding: 10px 12px; border-radius: 12px; background: var(--soft); color: #0A4A42; font-size: 12px; line-height: 1.6; }
+.trow[hidden] { display: none; }

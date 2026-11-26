@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>غضّ</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>غضّ</h1>
+      <p class="sub">حماية النظر في الصور والمقاطع</p>
+    </div>
+    <img src="icons/icon48.png" width="40" height="40" alt="">
+  </header>
+
+  <section class="power" id="powerCard">
+    <div>
+      <strong id="powerTitle">الحماية مفعّلة</strong>
+      <span id="powerSub">تعمل على كل المواقع</span>
+    </div>
+    <button type="button" role="switch" id="enabled" class="switch big" aria-label="تفعيل الحماية"><span></span></button>
+  </section>
+
+  <section>
+    <h2 id="modeLabel">طريقة التغطية</h2>
+    <div class="modes" role="radiogroup" aria-labelledby="modeLabel">
+      <button type="button" role="radio" class="mode" data-mode="full">
+        <span class="dot"></span>
+        <span><b>تغطية كاملة</b><small>تُحجب الصورة أو المقطع كاملًا متى ظهرت فيه امرأة.</small></span>
+      </button>
+      <button type="button" role="radio" class="mode" data-mode="face">
+        <span class="dot"></span>
+        <span><b>الوجه فقط</b><small>يُغطّى الوجه وحده وتبقى بقية الصورة ظاهرة.</small></span>
+      </button>
+      <button type="button" role="radio" class="mode" data-mode="auto">
+        <span class="dot"></span>
+        <span><b>تلقائي: الوجه واليدان</b><small>يتتبّع الوجه واليدين ويغطّيهما أثناء حركة المقطع.</small></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="styleLabel">شكل الغطاء</h2>
+    <div class="seg" role="radiogroup" aria-labelledby="styleLabel" data-key="style">
+      <button type="button" role="radio" data-val="blur">طمس</button>
+      <button type="button" role="radio" data-val="solid">لون ثابت</button>
+    </div>
+    <div class="row">
+      <label for="strength">قوة الغطاء</label>
+      <output id="strengthOut">٨٠٪</output>
+    </div>
+    <input type="range" id="strength" min="20" max="100" step="5">
+  </section>
+
+  <section class="card">
+    <h2 id="targetLabel">من يُغطّى</h2>
+    <div class="seg" role="radiogroup" aria-labelledby="targetLabel" data-key="target">
+      <button type="button" role="radio" data-val="women">النساء فقط</button>
+      <button type="button" role="radio" data-val="all">كل الوجوه</button>
+    </div>
+    <h2 id="sensLabel">حساسية الكشف</h2>
+    <div class="seg" role="radiogroup" aria-labelledby="sensLabel" data-key="sensitivity">
+      <button type="button" role="radio" data-val="low">منخفضة</button>
+      <button type="button" role="radio" data-val="mid">متوسطة</button>
+      <button type="button" role="radio" data-val="high">عالية</button>
+    </div>
+    <p class="hint">العالية تغطّي أكثر، وقد تغطّي أحيانًا وجوه رجال.</p>
+  </section>
+
+  <section class="card list">
+    <div class="trow">
+      <span><b>إخفاء مسبق حتى التحليل</b><small>تبقى الصور مطموسة لحظة تحميلها إلى أن يُفحص محتواها.</small></span>
+      <button type="button" role="switch" class="switch" data-key="prehide" aria-label="إخفاء مسبق حتى التحليل"><span></span></button>
+    </div>
+    <div class="trow">
+      <span><b>غطِّ كاملًا إن تعذّر الفحص</b><small>بعض المواقع تمنع قراءة المقطع، فيُغطّى احتياطًا.</small></span>
+      <button type="button" role="switch" class="switch" data-key="failCover" aria-label="غطِّ كاملًا إن تعذّر الفحص"><span></span></button>
+    </div>
+    <div class="trow" id="siteRow" hidden>
+      <span><b>إيقاف في هذا الموقع</b><small id="siteName"></small></span>
+      <button type="button" role="switch" class="switch" id="siteOff" aria-label="إيقاف في هذا الموقع"><span></span></button>
+    </div>
+  </section>
+
+  <p class="note">كل التحليل يتم على جهازك، ولا تُرسل أي صورة إلى أي خادم. أعد تحميل الصفحة إن لم تُغطَّ صورها فورًا.</p>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>
